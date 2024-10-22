@@ -2,22 +2,78 @@
 <html>
 <head>
     <title>Blog List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header ul li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .posts {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff;
+            border: #ccc 1px solid;
+        }
+        .posts h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .tags {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>Blog Posts</h1>
-    <ul>
-        {% for post in posts %}
-            <li>
+    <header>
+        <div class="container">
+            <h1>Blog Posts</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="posts">
+            {% for post in posts %}
                 <h2>{{ post.title }}</h2>
                 <p>{{ post.content }}</p>
-                <p>Tags: 
+                <p class="tags">Tags: 
                     {% for tag in post.tags.all %}
                         {{ tag.name }}
                         {% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
-            </li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>
